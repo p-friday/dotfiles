@@ -134,7 +134,17 @@ return { -- LSP Configuration & Plugins
 		--  - settings (table): Override the default settings passed when initializing the server.
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 		local servers = {
-			clangd = {},
+			clangd = {
+				cmd = {
+					"clangd",
+					"--background-index",
+					"--clang-tidy",
+					"--completion-style=detailed",
+					"--function-arg-placeholders",
+					"--fallback-style=llvm",
+					"--header-insertion=never",
+				},
+			},
 			gopls = {},
 			ols = {},
 			-- pyright = {},
@@ -192,5 +202,12 @@ return { -- LSP Configuration & Plugins
 				end,
 			},
 		})
+
+		-- change icons for diagnostics
+		local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = " ", Info = " " }
+		for type, icon in pairs(signs) do
+			local hl = "DiagnosticSign" .. type
+			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+		end
 	end,
 }
