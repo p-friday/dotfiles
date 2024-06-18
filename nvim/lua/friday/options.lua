@@ -14,7 +14,11 @@ vim.opt.showmode = false
 vim.opt.breakindent = true
 
 vim.opt.undofile = true
-vim.o.undodir = os.getenv("HOME") .. "/.vim/undodir"
+if vim.loop.os_uname().sysname == "Linux" then
+	vim.o.undodir = os.getenv("HOME") .. "/.vim/undodir"
+else
+	vim.o.undodir = os.getenv("USERPROFILE") .. "/.vim/undodir"
+end
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
