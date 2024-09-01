@@ -8,6 +8,7 @@ require("friday.keymaps")
 
 if vim.g.vscode then
 	require("vsc.vscode_init")
+	return {}
 end
 
 -- [[ Install `lazy.nvim` plugin manager ]]
