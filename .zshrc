@@ -42,6 +42,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 # eval "$(fzf --zsh)"
 
 export NVM_DIR="$HOME/.nvm"
