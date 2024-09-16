@@ -9,6 +9,10 @@ vim.keymap.set("n", "<leader>z", function()
 	vscode.action("workbench.action.toggleCenteredLayout")
 end)
 
+vim.keymap.set("n", "<C-b>", function()
+	vscode.action("workbench.action.toggleSidebarVisibility")
+end)
+
 vim.keymap.set("n", "<leader>df", function()
 	vscode.call("workbench.view.explorer")
 end)
