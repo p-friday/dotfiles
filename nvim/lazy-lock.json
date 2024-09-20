@@ -20,6 +20,7 @@
   "mellifluous.nvim": { "branch": "main", "commit": "f310eb2422dfa72f6d887efc462985bc82503078" },
   "neodev.nvim": { "branch": "main", "commit": "46aa467dca16cf3dfe27098042402066d2ae242d" },
   "neogruvbox.nvim": { "branch": "master", "commit": "f7818c9f7c0ee7f2c1ec74a98983a1c8b4364908" },
+  "neovim-ayu": { "branch": "master", "commit": "2839c88cd297a069e93df1aab542c087e8f6e8c0" },
   "nordic.nvim": { "branch": "main", "commit": "03fcff3c8d68049b8118047784746048b4a08049" },
   "nvim-cmp": { "branch": "main", "commit": "ae644feb7b67bf1ce4260c231d1d4300b19c6f30" },
   "nvim-lspconfig": { "branch": "master", "commit": "d4814330b207a4e05ba9515e453b0e87f20357ec" },

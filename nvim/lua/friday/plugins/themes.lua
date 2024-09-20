@@ -1,9 +1,37 @@
 return {
 	{
-		"AlexvZyl/nordic.nvim",
+		"Shatur/neovim-ayu",
 		priority = 1000,
 		init = function()
-			vim.cmd.colorscheme("nordic")
+			vim.cmd.colorscheme("ayu")
+		end,
+		config = function()
+			require("ayu").setup({
+				overrides = {
+					Normal = { bg = "None" },
+					SignColumn = { bg = "None" },
+					ColorColumn = { bg = "#2a2725" },
+					Folded = { bg = "None" },
+					FoldColumn = { bg = "None" },
+					CursorColumn = { bg = "None" },
+					CursorLine = { bg = "#2a2725" },
+					VertSplit = { bg = "None" },
+					LineNr = { fg = "#5c5747" },
+					CursorLineNr = { fg = "#c1bcae" },
+					StatusLine = { bg = "#0e0e0b" },
+					TelescopeNormal = { bg = "#0e0e0b" },
+					NormalFloat = { bg = "#0e0e0b" },
+					Pmenu = { bg = "#0e0e0b" },
+					PmenuSel = { bg = "#2f230a" },
+				},
+			})
+		end,
+	},
+	{
+		"AlexvZyl/nordic.nvim",
+		-- priority = 1000,
+		init = function()
+			-- vim.cmd.colorscheme("nordic")
 			vim.cmd.hi("@parameter gui=none")
 			vim.cmd.hi("clear @spell")
 		end,
