@@ -40,6 +40,8 @@ return { -- Autocompletion
 		local luasnip = require("luasnip")
 		luasnip.config.setup({})
 
+		vim.opt.pumheight = 10
+
 		cmp.setup({
 			snippet = {
 				expand = function(args)
