@@ -1,7 +1,15 @@
 return {
 	{
-		"Shatur/neovim-ayu",
+		"xiantang/darcula-dark.nvim",
 		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme("darcula-dark")
+			vim.cmd.hi("Normal guibg=none")
+		end,
+	},
+	{
+		"Shatur/neovim-ayu",
+		-- priority = 1000,
 		init = function()
 			vim.cmd.colorscheme("ayu")
 		end,
@@ -36,62 +44,64 @@ return {
 			vim.cmd.hi("clear @spell")
 		end,
 		config = function()
-			local palette = require("nordic.colors")
-			local border = {
-				bg = palette.black0,
-			}
 			require("nordic").setup({
 				bold_keywords = true,
 				italic_comments = false,
-				transparent_bg = true,
+				transparent = true,
 				swap_backgrounds = true,
 				cursorline = {
 					theme = "light",
 				},
-				override = {
-					FloatBorder = {
+				on_highlight = function(highlights, palette)
+					highlights.FloatBorder = {
 						bg = palette.gray0,
-					},
-					FloatTitle = {
+					}
+					highlights.FloatTitle = {
 						bg = palette.gray0,
-					},
-					TelescopeNormal = border,
-					TelescopeResultsBorder = border,
-					TelescopePreviewBorder = border,
-					LspReferenceText = {
+					}
+					highlights.TelescopeNormal = {
+						bg = palette.black0,
+					}
+					highlights.TelescopeResultsBorder = {
+						bg = palette.black0,
+					}
+					highlights.TelescopePreviewBorder = {
+						bg = palette.black0,
+					}
+					highlights.LspReferenceText = {
 						bg = palette.gray1,
-					},
-					LspReferenceRead = {
+					}
+					highlights.LspReferenceRead = {
 						bg = palette.gray1,
-					},
-					LspReferenceWrite = {
+					}
+					highlights.LspReferenceWrite = {
 						bg = palette.gray1,
-					},
-					CursorLine = {
+					}
+					highlights.CursorLine = {
 						bg = "#303030",
-					},
-					CursorLineNr = {
+					}
+					highlights.CursorLineNr = {
 						fg = palette.yellow.base,
-					},
-					LineNr = {
+					}
+					highlights.LineNr = {
 						fg = palette.gray5,
-					},
-					ColorColumn = {
+					}
+					highlights.ColorColumn = {
 						bg = "#212121",
-					},
-					StatusLine = {
+					}
+					highlights.StatusLine = {
 						fg = palette.white0,
-					},
-					Pmenu = {
+					}
+					highlights.Pmenu = {
 						bg = palette.gray0,
-					},
-					PmenuSel = {
+					}
+					highlights.PmenuSel = {
 						bg = palette.gray4,
-					},
-					NormalFloat = {
+					}
+					highlights.NormalFloat = {
 						bg = palette.gray0,
-					},
-				},
+					}
+				end,
 			})
 		end,
 	},
@@ -138,10 +148,5 @@ return {
 				},
 			})
 		end,
-	},
-	{
-		"almo7aya/neogruvbox.nvim",
-		-- priority = 1000,
-		-- decent if i change the bloody pink CursorLine
 	},
 }
