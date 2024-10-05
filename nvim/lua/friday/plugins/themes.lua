@@ -1,18 +1,8 @@
 return {
-	{
-		"xiantang/darcula-dark.nvim",
-		priority = 1000,
-		config = function()
-			vim.cmd.colorscheme("darcula-dark")
-			vim.cmd.hi("Normal guibg=none")
-		end,
-	},
+	"tjdevries/colorbuddy.nvim",
+	"xiantang/darcula-dark.nvim",
 	{
 		"Shatur/neovim-ayu",
-		-- priority = 1000,
-		init = function()
-			vim.cmd.colorscheme("ayu")
-		end,
 		config = function()
 			require("ayu").setup({
 				overrides = {
@@ -37,12 +27,6 @@ return {
 	},
 	{
 		"AlexvZyl/nordic.nvim",
-		-- priority = 1000,
-		init = function()
-			-- vim.cmd.colorscheme("nordic")
-			vim.cmd.hi("@parameter gui=none")
-			vim.cmd.hi("clear @spell")
-		end,
 		config = function()
 			require("nordic").setup({
 				bold_keywords = true,
@@ -112,10 +96,6 @@ return {
 	},
 	{
 		"rebelot/kanagawa.nvim",
-		-- priority = 1000,
-		init = function()
-			-- vim.cmd.colorscheme("kanagawa-dragon")
-		end,
 		opts = {
 			commentStyle = { italic = false },
 			keywordStyle = { italic = false, bold = true },
@@ -128,10 +108,6 @@ return {
 	},
 	{
 		"ramojus/mellifluous.nvim",
-		-- priority = 1000,
-		init = function()
-			-- vim.cmd.colorscheme("mellifluous")
-		end,
 		opts = {},
 		config = function()
 			require("mellifluous").setup({

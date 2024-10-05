@@ -55,12 +55,6 @@ keep_current_path() {
 }
 precmd_functions+=(keep_current_path)
 
-export PATH="$HOME/neovim/bin:$PATH"
-export GOPATH="$HOME/go"
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/friday/Odin
-
 # bun completions
 [ -s "/home/friday/.bun/_bun" ] && source "/home/friday/.bun/_bun"
 
