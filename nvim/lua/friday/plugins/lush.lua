@@ -1,7 +1,7 @@
 return {
 	"rktjmp/lush.nvim",
 	{
-		dir = "~/dotfiles/yellope",
+		dir = "~/dotfiles/yellope.nvim",
 		lazy = false,
 		priority = 1000,
 		init = function()

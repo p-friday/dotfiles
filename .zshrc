@@ -12,6 +12,17 @@ plugins=(
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
+# emit escape sequence so windows terminal duplicate tab keeps current path
+keep_current_path() {
+  printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
+}
+precmd_functions+=(keep_current_path)
+
+# run neovide in wsl
+neovide() {
+  neovide.exe --wsl --neovim-bin /home/friday/neovim/bin/nvim "$@" >/dev/null 2>&1 & disown
+}
+
 autoload -U compinit && compinit
 
 # Keybindings
@@ -24,7 +35,9 @@ bindkey '^n' history-search-forward
 alias lg='lazygit'
 alias bat='batcat'
 alias nvim-new='NVIM_APPNAME="nvim-new" nvim'
+alias neo='neovide'
 
+# Options
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
@@ -48,12 +61,6 @@ source <(fzf --zsh)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# emit escape sequence so windows terminal duplicate tab keeps current path
-keep_current_path() {
-  printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
-}
-precmd_functions+=(keep_current_path)
 
 # bun completions
 [ -s "/home/friday/.bun/_bun" ] && source "/home/friday/.bun/_bun"

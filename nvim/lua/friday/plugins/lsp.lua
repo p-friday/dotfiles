@@ -148,7 +148,7 @@ return { -- LSP Configuration & Plugins
 			gopls = {},
 			ols = {},
 			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-			tsserver = {},
+			ts_ls = {},
 			--
 
 			lua_ls = {
@@ -178,9 +178,9 @@ return { -- LSP Configuration & Plugins
 		-- You can add other tools here that you want Mason to install
 		-- for you, so that they are available from within Neovim.
 		local ensure_installed = vim.tbl_keys(servers or {})
-		vim.list_extend(ensure_installed, {
-			"stylua", -- Used to format Lua code
-		})
+		-- vim.list_extend(ensure_installed, {
+		-- 	"stylua", -- Used to format Lua code
+		-- })
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 		require("mason-lspconfig").setup({
@@ -194,13 +194,86 @@ return { -- LSP Configuration & Plugins
 					require("lspconfig")[server_name].setup(server)
 				end,
 			},
+			ensure_installed = ensure_installed,
+			automatic_installation = true,
 		})
 
 		-- change icons for diagnostics
-		local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = " ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
+		vim.diagnostic.config({
+			severity_sort = true,
+			float = { border = "rounded", source = "if_many" },
+			underline = { severity = vim.diagnostic.severity.ERROR },
+			signs = vim.g.have_nerd_font and {
+				text = {
+					[vim.diagnostic.severity.ERROR] = "󰅚 ",
+					[vim.diagnostic.severity.WARN] = "󰀪 ",
+					[vim.diagnostic.severity.INFO] = "󰋽 ",
+					[vim.diagnostic.severity.HINT] = "󰌶 ",
+				},
+			} or {},
+			virtual_text = {
+				source = "if_many",
+				spacing = 2,
+				format = function(diagnostic)
+					local diagnostic_message = {
+						[vim.diagnostic.severity.ERROR] = diagnostic.message,
+						[vim.diagnostic.severity.WARN] = diagnostic.message,
+						[vim.diagnostic.severity.INFO] = diagnostic.message,
+						[vim.diagnostic.severity.HINT] = diagnostic.message,
+					}
+					return diagnostic_message[diagnostic.severity]
+				end,
+			},
+		})
+		-- setup() is also available as an alias
+		require("lspkind").init({
+			-- DEPRECATED (use mode instead): enables text annotations
+			--
+			-- default: true
+			-- with_text = true,
+
+			-- defines how annotations are shown
+			-- default: symbol
+			-- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+			mode = "symbol_text",
+
+			-- default symbol map
+			-- can be either 'default' (requires nerd-fonts font) or
+			-- 'codicons' for codicon preset (requires vscode-codicons font)
+			--
+			-- default: 'default'
+			preset = "codicons",
+
+			-- override preset symbols
+			--
+			-- default: {}
+			symbol_map = {
+				Text = "󰉿",
+				Method = "󰆧",
+				Function = "󰊕",
+				Constructor = "",
+				Field = "󰜢",
+				Variable = "󰀫",
+				Class = "󰠱",
+				Interface = "",
+				Module = "",
+				Property = "󰜢",
+				Unit = "󰑭",
+				Value = "󰎠",
+				Enum = "",
+				Keyword = "󰌋",
+				Snippet = "",
+				Color = "󰏘",
+				File = "󰈙",
+				Reference = "󰈇",
+				Folder = "󰉋",
+				EnumMember = "",
+				Constant = "󰏿",
+				Struct = "󰙅",
+				Event = "",
+				Operator = "󰆕",
+				TypeParameter = "",
+			},
+		})
 	end,
 }
