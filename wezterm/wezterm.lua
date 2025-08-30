@@ -5,10 +5,12 @@ local act = wezterm.action
 local mux = wezterm.mux
 
 -- APPEARANCE --
--- config.color_scheme = 'N0tch2k'
-config.color_scheme = "Gruvbox Dark (Gogh)"
+-- config.color_scheme = "Fahrenheit"
+config.color_scheme = "Pulp (terminal.sexy)"
+-- config.color_scheme = "s3r0 modified (terminal.sexy)"
+-- config.color_scheme = "Sweet Love (terminal.sexy)"
 config.colors = {
-	background = "#11100d",
+	background = "#171612",
 	cursor_bg = "#f29718",
 	cursor_border = "#f29718",
 }
@@ -90,10 +92,11 @@ config.keys = {
 		action = act.ActivatePaneDirection("Down"),
 	},
 }
+
 for i = 1, 8 do
 	table.insert(config.keys, {
 		key = tostring(i),
-		mods = "LEADER",
+		mods = "ALT",
 		action = act.ActivateTab(i - 1),
 	})
 end

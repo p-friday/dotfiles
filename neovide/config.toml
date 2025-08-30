@@ -1,0 +1,12 @@
+wsl = true
+fork = true
+
+[font]
+size = 15.0
+
+[[font.normal]]
+family = "Cascadia Mono NF"
+style = "w100"
+
+[font.features]
+"Cascadia Mono NF" = ["-calt", "-liga", "-dlig"]
