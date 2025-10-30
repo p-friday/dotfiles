@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "version": 2,
+  "version": 3,
   "pwd": "osc99",
   "final_space": true,
   "blocks": [
@@ -12,8 +12,8 @@
             "type": "status",
             "style": "plain",
             "foreground": "p:nord13",
-            "foreground_templates": ["{{ if .Error }}p:nord11{{ end }}"],
             "background": "transparent",
+            "foreground_templates": ["{{ if .Error }}p:nord11{{ end }}"],
             "template": "{{ if .Error }}✘ {{ else }} {{ end }}",
             "properties": {
                 "always_enabled": true
