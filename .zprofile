@@ -6,4 +6,5 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/friday/Odin
 export PATH=$PATH:/home/friday/.local/bin
 export PATH=$PATH:/home/friday/zig/build/stage3/bin
+export PATH=$PATH:/home/friday/cmake-4.2/bin
 
